@@ -1,0 +1,2 @@
+# TrinityAllWeather
+Full Weather Strategy
