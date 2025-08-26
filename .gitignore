@@ -1,0 +1,31 @@
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# VS Code 配置
+.vscode/
+
+# Python 缓存文件
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 虚拟环境
+venv/
+.env
+
+# 数据文件（如果你有数据库/大数据）
+*.sqlite3
+*.db
+*.csv
+*.log
+
+# Jupyter Notebook 检查点
+.ipynb_checkpoints/
+
+# 大文件（比如模型）
+*.h5
+*.pkl
+*.pt
+*.onnx
