@@ -1,0 +1,43 @@
+---
+title: "Bloomberg"
+output: html_document
+date: "2025-08-27"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Bloomberg
+
+```{r BBT}
+library(Rblpapi)
+library(data.table)
+
+con <- blpConnect()
+
+# 定义 S&P500 期货合约代码
+codes <- c("ES J25 Comdty", "ES K25 Comdty", "ES M25 Comdty")
+
+# 存储结果
+fut_data <- list()
+
+# 循环拉取数据
+for (i in 1:length(codes)) {
+  fut_data[[codes[i]]] <- bdh(
+    codes[i],
+    c("PX_OPEN", "PX_LAST", "PX_VOLUME"),
+    start.date = as.Date("2025-04-01"),
+    end.date   = as.Date("2025-06-30"),
+    include.non.trading.days = FALSE
+  )
+}
+
+# 转换为 data.table 并合并
+all_data <- rbindlist(lapply(names(fut_data), function(x) {
+  dt <- as.data.table(fut_data[[x]])
+  dt[, ticker := x]
+  return(dt)
+}))
+```
+
