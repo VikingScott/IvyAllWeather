@@ -18,7 +18,6 @@ venv/
 # 数据文件（如果你有数据库/大数据）
 *.sqlite3
 *.db
-*.csv
 *.log
 
 # Jupyter Notebook 检查点
